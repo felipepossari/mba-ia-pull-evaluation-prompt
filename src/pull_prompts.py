@@ -4,7 +4,7 @@ Script para fazer pull de prompts do LangSmith Prompt Hub.
 Este script:
 1. Conecta ao LangSmith usando credenciais do .env
 2. Faz pull dos prompts do Hub
-3. Salva localmente em prompts/bug_to_user_story_v1.yml
+3. Salva localmente em prompts/bug_to_user_story_v1-model.yml
 
 SIMPLIFICADO: Usa serialização nativa do LangChain para extrair prompts.
 """
@@ -30,14 +30,16 @@ def pull_prompts_from_langsmith():
     system_prompt = prompt.messages[0].prompt.template
     user_prompt = prompt.messages[1].prompt.template
 
-    output_path = Path("prompts/bug_to_user_story_v1.yml")
+    output_path = Path("../prompts/bug_to_user_story_v1.yml")
 
     prompt_dict = {
         "name": prompt.metadata.get("lc_hub_repo"),
+        "description": "Prompt para converter relatos de bugs em User Stories",
         "system_prompt": system_prompt,
         "user_prompt": user_prompt,
         "version": "v1",
-        "created_at": date.today()
+        "created_at": date.today(),
+        "tags": ["bug-analysis", "user-story", "product-management"]
     }
 
     if save_yaml(prompt_dict, output_path):

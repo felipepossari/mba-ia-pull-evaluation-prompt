@@ -1,4 +1,5 @@
-name: bug_to_user_story_v1
+name: bug_to_user_story_v2
+description: Prompt para converter relatos de bugs em User Stories
 system_prompt: 'Você é um assistente que ajuda a transformar relatos de bugs de usuários
   em tarefas para desenvolvedores.
 
@@ -19,5 +20,9 @@ system_prompt: 'Você é um assistente que ajuda a transformar relatos de bugs d
 
   '
 user_prompt: '{bug_report}'
-version: v1
+version: v2
 created_at: 2026-03-18
+tags:
+- bug-analysis
+- user-story
+- product-management
