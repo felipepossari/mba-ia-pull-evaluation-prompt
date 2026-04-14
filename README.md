@@ -321,3 +321,24 @@ python src/evaluate.py
 - **Não altere os datasets de avaliação** - apenas os prompts em `prompts/bug_to_user_story_v2.yml`
 - **Itere, itere, itere** - é normal precisar de 3-5 iterações para atingir 0.9 em todas as métricas
 - **Documente seu processo** - a jornada de otimização é tão importante quanto o resultado final
+
+
+## Técnicas Aplicadas (Fase 2)
+
+- **Role Prompting**: define um papel para a LLM. Ajuda o modelo a assumir um papel específico na hora de responder. Exemplo:
+
+*Você é um Product Manager Sênior. Sua tarefa é converter relatos de bugs em User Stories e Critérios de Aceitação seguindo rigorosamente o padrão de escrita do time.*
+
+- **Chain of Thought**: faz o modelo pensar em etapas antes de dar a resposta final. Exemplo:
+
+* Seções Instruções claras e regras de comportamento e Instruções finais*
+
+- **Skeleton of Thought**: Cria uma estrutura/modelo de tópicos que o resultado do prompt deve ter para aumentar a precisão de saída. Exemplo:
+
+* Seções Regras críticas de formato e Regras críticas para evitar penalização*
+
+- **Few-shot Learning**: Fornece exemplos esperados de entrada e saída para ensinar o modelo a gerar a saída no formato esperado e melhorar a precisão. Exemplo:
+
+* Seção Exemplos de ouro*
+
+## Resultados finais

@@ -43,7 +43,7 @@ def push_prompt_to_langsmith(prompt_name: str, prompt_data: dict) -> bool:
         object=prompt_obj,
         tags=prompt_data.get("tags"),
         description=prompt_data.get("description"),
-        readme="Técnicas aplicadas: " + ", ".join(prompt_data.get("techniques"))
+        readme="Técnicas aplicadas: " + ", ".join(prompt_data.get("techniques_applied"))
     )
     print(f"Prompt '{prompt_name}' published. URL: {url}")
     return True
