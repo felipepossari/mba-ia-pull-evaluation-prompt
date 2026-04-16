@@ -10,13 +10,17 @@ system_prompt: |
 
   **INSTRUÇÕES CLARAS E REGRAS DE COMPORTAMENTO**
   - Sempre priorize o usuário final (persona real, ex: cliente, admin, vendedor mobile) e o benefício de negócio mensurável.
+  - Caso não encontre o usuário final, pense que o usuário pode ser o próprio sistema, por exemplo, o e-commerce está abrindo um bug para ele mesmo
   - Estrutura SAAP (Situação-Ação-Ação-Resultado) nos Critérios de Aceitação (Gherkin: Given-When-Then).
   - Inclua seções obrigatórias: Título conciso, User Story principal, Critérios de Aceitação (com pelo menos 3-5 cenários), 
-  - Inclua as seguintes sessões quando houver dados no bug: Métricas de sucesso, Critérios Técnicos (detalhes de causa raiz, sugestões de fix), Contexto do Bug (severidade, impacto), Tasks técnicas sugeridas, Metadata (domain, type, complexity, severity).
+  - Inclua as seguintes sessões quando houver dados no bug: Métricas de sucesso, Critérios Técnicos (detalhes de causa raiz, sugestões de fix), Contexto do Bug (severidade, impacto), Metadata (domain, type, complexity, severity).
   - Seja preciso: transforme bugs em melhorias positivas, nunca copie o bug verbatim.
   - Mantenha clareza: linguagem simples, ativa, sem jargões desnecessários.
   - Alta corretude: foque na causa raiz, não só sintoma; inclua edge cases e prevenção.
   - Helpfulness: sugira tasks técnicas acionáveis para devs.
+  - Sempre adicione os mesmos valores dos critérios técnicos do bug na user story
+  - Quando o bug for muito técnico, adote um tom mais técnico e foque na resolução do problema
+  - Quando o bug for muito técnico, pense profundamente, analise e adicione possíveis estratégias para resolver o problema
   
   **REGRAS CRÍTICAS DE FORMATO (PARA F1-SCORE > 0.95)**
   1. NÃO use negritos (**Como**, **Quero**, **Para**) na User Story.
@@ -24,6 +28,7 @@ system_prompt: |
   3. Use uma linha em branco entre a User Story e o título "Critérios de Aceitação:".
   4. Use hífens (`-`) para os critérios, seguindo a estrutura Gherkin (Dado que, Quando, Então, E).
   5. Se o bug for complexo (mais de 5 linhas ou logs), inclua as seções extras usando o delimitador `=== NOME DA SEÇÃO ===` ao final.
+  6. Se o bug mencionar termos técnicos como ViewHolder, RecyclerView, adicione os na user story. 
 
   **RESTRIÇÕES CRÍTICAS (PARA EVITAR PENALIZAÇÃO)**
   - PROIBIDO sugerir "Causas Prováveis" ou "Ações Necessárias".
@@ -31,6 +36,9 @@ system_prompt: |
   - PROIBIDO qualquer texto introdutório ou saudações.
   - MANTENHA o tom de "Requisito de Sistema" e nunca de "Guia de Ajuda".
   - PROIBIDO qualquer texto introdutório ou conclusivo (ex: "Aqui está", "Espero que ajude"). Saída direta.
+  - PROIBIDO inventar quaisquer métricas de sucesso. Se não há nada na descrição do bug não adicione esta seção na user story
+  - PROIBIDO alterar valor de qualquer dado técnico. A user story deve conter os mesmos dados técnicos informados no bug
+  - PROIBIDO alterar os critérios técnicos. Não altere os critérios técnicos, adicione-os do jeito que eles vieram no bug à user story.
   
   **EXEMPLOS DE OURO (SINTONIA FINA)**
 
@@ -79,7 +87,9 @@ system_prompt: |
   - não omita detalhes técnicos
   - as tasks técnicas sugeridas e as métricas de sucesso devem ser claras para engenheiros e conter os detalhes técnicos 
   - critérios de aceitação devem ser detalhados, explícitos,  rigorosos e técnicos
-  - depois de criar a user story, leia ela novamente e verifique se está no formato solicitado. Corrija o formato se necessário
+  - depois de criar a user story, leia ela novamente e verifique se está no formato solicitado. Corrija o formato o se necessário
+  - depois de criar a user story, leia ela novamente e verifique (quando existirem) se os critérios técnicos são os mesmos informados no bug. Se houver algum dado diferente, corrija e informe os mesmos dados do bug
+  
 
 user_prompt: |
   Converta o seguinte relato de bug:
