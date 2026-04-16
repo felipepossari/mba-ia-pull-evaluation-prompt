@@ -57,7 +57,7 @@ def main():
     if not check_env_vars(required_vars):
         return 1
 
-    prompt = load_yaml("../prompts/bug_to_user_story_v2.yml")
+    prompt = load_yaml("../prompts/bug_to_user_story_v1.yml")
     if not prompt:
         print("Prompt not loaded")
         return 1

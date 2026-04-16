@@ -342,3 +342,78 @@ python src/evaluate.py
 * Seção Exemplos de ouro*
 
 ## Resultados finais
+
+- Prompt: [Prompt](https://smith.langchain.com/prompts/bug_to_user_story_v2/aaeacb47?organizationId=85cd771c-4ff6-409d-a0b7-86c181ea39aa&tab=0)
+- Dashboard: [Dashboard](https://smith.langchain.com/o/85cd771c-4ff6-409d-a0b7-86c181ea39aa/projects/p/14039e3a-41c0-4725-9dde-460e62bd0ea2?timeModel=%7B%22duration%22%3A%221d%22%7D)
+- Screenshot: 
+### Dashboard 
+![Dashboard](image/dashboard.png)
+
+### Prompt inicial
+![Log otimizado](image/log-inicial.png)
+
+### Prompt otimizado
+![Log otimizado](image/log-otimizado.png)
+
+### Tabela comparativa
+
+| Métrica       | v1 (inicial) | v2 (otimizado) | Mínimo |
+|---------------|:------------:|:--------------:|:------:|
+| Helpfulness   |     0.90     |      0.92      | 0.9    |
+| Correctness   |     0.86     |      0.91      | 0.9    |
+| F1-Score      |     0.82     |      0.89      | 0.9    |
+| Clarity       |     0.91     |      0.91      | 0.9    |
+| Precision     |     0.89     |      0.92      | 0.9    |
+| **Média**     |  **0.8752**  |   **0.9097**   | **0.9**|
+
+## Como Executar
+
+### Pré-requisitos
+
+- Python 3.9+
+- Conta no [LangSmith](https://smith.langchain.com/) com API key
+- API key da OpenAI ou Google (Gemini)
+
+### Configuração
+
+```bash
+# Clone o repositório e acesse a pasta
+git clone https://github.com/felipepossari/mba-ia-pull-evaluation-prompt
+cd mba-ia-pull-evaluation-prompt
+
+# Crie e ative o ambiente virtual
+python3 -m venv venv
+source venv/bin/activate
+
+# Instale as dependências
+pip install -r requirements.txt
+
+# Copie e preencha as variáveis de ambiente
+cp .env.example .env
+```
+
+Edite o `.env` com suas credenciais:
+
+```
+LANGCHAIN_API_KEY=...
+LANGSMITH_API_KEY=...
+LLM_PROVIDER=google          # ou openai
+LLM_MODEL=gemini-3.1-flash-lite-preview
+EVAL_MODEL=gemini-3.1-flash-lite-preview
+```
+
+### Execução
+
+```bash
+# 1. Pull do prompt inicial do LangSmith
+python src/pull_prompts.py
+
+# 2. Push do prompt otimizado bug_to_user_story_v2.yml para o LangSmith
+python src/push_prompts.py
+
+# 3. Avaliação do prompt bug_to_user_story_v2.yml
+python src/evaluate.py
+
+# 4. Testes de validação do arquivo YAML
+pytest tests/test_prompts.py
+```
