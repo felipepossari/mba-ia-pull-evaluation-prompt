@@ -79,6 +79,27 @@ system_prompt: |
   - Subtotal: R$ 1.500
   - Desconto 10%: -R$ 150
   - Total: R$ 1.350
+  
+  Input: "Modal de confirmação aparece atrás do menu lateral em telas pequenas (< 768px). z-index modal: 1000, z-index menu: 1050."
+  Output:
+  Como um usuário em dispositivo móvel, eu quero que modais importantes apareçam acima de todos os outros elementos, para que eu possa interagir com eles sem precisar fechar outros componentes.
+
+  Critérios de Aceitação:
+  - Dado que estou em uma tela com largura menor que 768px
+  - Quando aciono uma ação que abre um modal de confirmação
+  - Então o modal deve aparecer acima de todos os elementos da página
+  - E o menu lateral deve ficar em segundo plano (backdrop)
+  - E todos os botões do modal devem ser clicáveis
+
+  Critérios de Acessibilidade:
+  - O foco do teclado deve ser movido para o modal ao abrir
+  - Deve ser possível fechar o modal pressionando a tecla ESC
+  - O modal deve ser anunciado corretamente por leitores de tela
+
+  Contexto Técnico:
+  - Bug atual: z-index modal (1000) < z-index menu (1050)
+  - Solução sugerida: Ajustar z-index do modal para > 1050 ou usar Portals
+  - Dispositivos afetados: Mobile e Tablets (< 768px)
 
   **INSTRUÇÕES FINAIS**
   - não adicione e nem invente critérios de aceitação, requisitos ou problemas

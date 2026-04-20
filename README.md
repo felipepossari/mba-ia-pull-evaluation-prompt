@@ -360,11 +360,11 @@ python src/evaluate.py
 | Métrica       | v1 (inicial) | v2 (otimizado) | Mínimo |
 |---------------|:------------:|:--------------:|:------:|
 | Helpfulness   |     0.90     |      0.92      | 0.9    |
-| Correctness   |     0.86     |      0.91      | 0.9    |
-| F1-Score      |     0.82     |      0.89      | 0.9    |
-| Clarity       |     0.91     |      0.91      | 0.9    |
-| Precision     |     0.89     |      0.92      | 0.9    |
-| **Média**     |  **0.8752**  |   **0.9097**   | **0.9**|
+| Correctness   |     0.86     |      0.92      | 0.9    |
+| F1-Score      |     0.82     |      0.93      | 0.9    |
+| Clarity       |     0.91     |      0.93      | 0.9    |
+| Precision     |     0.89     |      0.91      | 0.9    |
+| **Média**     |  **0.8752**  |   **0.9209**   | **0.9**|
 
 ## Como Executar
 
